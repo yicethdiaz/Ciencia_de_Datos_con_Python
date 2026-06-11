@@ -12,7 +12,7 @@
 <meta name="author" content="Luis Imitola">
 <meta name="author" content="Marxi Cardenas">
 
-<title>Exploratorio de Datos - Entrega I V2</title>
+<title>Exploratorio de Datos - Entrega I VF</title>
 <style>
 
 code{white-space: pre-wrap;}
@@ -2619,7 +2619,9 @@ h3 { font-size: 1rem; }
     <h2 id="toc-title">Tabla de Contenido</h2>
    
   <ul>
-  <li><a href="#cargue-y-lectura-del-archivo" id="toc-cargue-y-lectura-del-archivo" class="nav-link active" data-scroll-target="#cargue-y-lectura-del-archivo">1 Cargue y lectura del archivo</a>
+  <li><a href="#información-general" id="toc-información-general" class="nav-link active" data-scroll-target="#información-general">Información General</a>
+  <ul class="collapse">
+  <li><a href="#cargue-y-lectura-del-archivo" id="toc-cargue-y-lectura-del-archivo" class="nav-link" data-scroll-target="#cargue-y-lectura-del-archivo">1 Cargue y lectura del archivo</a>
   <ul class="collapse">
   <li><a href="#importación-de-librerías" id="toc-importación-de-librerías" class="nav-link" data-scroll-target="#importación-de-librerías">1.1 Importación de Librerías</a></li>
   <li><a href="#carga-del-archivo-csv" id="toc-carga-del-archivo-csv" class="nav-link" data-scroll-target="#carga-del-archivo-csv">1.2 Carga del archivo CSV</a></li>
@@ -2656,6 +2658,7 @@ h3 { font-size: 1rem; }
   <li><a href="#corrección-de-valores-negativos" id="toc-corrección-de-valores-negativos" class="nav-link" data-scroll-target="#corrección-de-valores-negativos">7.1 Corrección de valores negativos</a></li>
   <li><a href="#comparación-antesdespués-de-la-winsorización-y-las-transformaciones" id="toc-comparación-antesdespués-de-la-winsorización-y-las-transformaciones" class="nav-link" data-scroll-target="#comparación-antesdespués-de-la-winsorización-y-las-transformaciones">7.2 Comparación antes/después de la winsorización y las transformaciones</a></li>
   </ul></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -2665,7 +2668,7 @@ h3 { font-size: 1rem; }
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exploratorio de Datos - Entrega I V2</h1>
+<h1 class="title">Exploratorio de Datos - Entrega I VF</h1>
 <p class="subtitle lead">EDA y preprocesamiento para predicción de ajustes de facturación</p>
 </div>
 
@@ -2699,6 +2702,23 @@ h3 { font-size: 1rem; }
 </header>
 
 
+<section id="información-general" class="level1">
+<h1>Información General</h1>
+<p><strong>Objetivo:</strong> preparar la base <code>DataAjuste.csv</code> para entrenar un modelo de clasificación binaria que estime si una cuenta tendrá ajuste en el período de análisis.</p>
+<p><strong>Variable respuesta:</strong> AJUSTE_PERIODO<br>
+1 = tendrá ajuste<br>
+0 = no tendrá ajuste.</p>
+<p><strong>Resumen del enfoque aplicado:</strong></p>
+<ol type="1">
+<li>Se excluye <code>CUENTA</code>, porque es un identificador y no una variable predictiva.</li>
+<li>Se separa la información en <code>train</code>, <code>validación</code> y <code>test</code> de forma estratificada para proteger la proporción de positivos.</li>
+<li>Se corrigen valores negativos imposibles sin eliminar filas.</li>
+<li>Se conservan señales útiles mediante banderas de negativos, ceros estructurales y valores extremos.</li>
+<li>Se aplica winsorización robusta con percentiles menos agresivos, calculados solo en entrenamiento.</li>
+<li>Se crean variables <code>log1p</code>, razones y diferencias para reducir asimetrías y capturar comportamiento relativo.</li>
+<li>Se agrupan categorías poco frecuentes y se alinean columnas entre conjuntos.</li>
+<li>Se deja una matriz final lista para modelos con pesos por clase y evaluación por <code>Recall</code>, <code>Precision</code>, <code>F1</code> y <code>PR-AUC</code>.</li>
+</ol>
 <section id="cargue-y-lectura-del-archivo" class="level2">
 <h2 class="anchored" data-anchor-id="cargue-y-lectura-del-archivo">1 Cargue y lectura del archivo</h2>
 <section id="importación-de-librerías" class="level3">
@@ -2722,8 +2742,8 @@ h3 { font-size: 1rem; }
 </section>
 <section id="carga-del-archivo-csv" class="level3">
 <h3 class="anchored" data-anchor-id="carga-del-archivo-csv">1.2 Carga del archivo CSV</h3>
-<p>SEPARADOR: (;)<br>
-DECIMAL: (,)</p>
+<p>Separador: (;)<br>
+Decimal: (,)</p>
 <div id="595c35e4" class="cell" data-execution_count="41">
 <details class="code-fold">
 <summary>Código</summary>
@@ -4525,6 +4545,7 @@ max    1.240630e+09  15044841.76</code></pre>
 </div>
 <p>Señal esperada: p50 y p95 se mantienen casi iguales; el máximo baja de forma controlada.<br>
 Para el entrenamiento, las columnas LOG1P_* y el escalado robusto reducen el impacto de colas largas.</p>
+</section>
 </section>
 </section>
 
