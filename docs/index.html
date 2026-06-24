@@ -2699,10 +2699,10 @@ h3 { font-size: 1rem; }
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">&quot;whitegrid&quot;</span>)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;✅ Entorno analítico configurado. Librerías cargadas exitosamente.&quot;</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Entorno analítico configurado. Librerías cargadas exitosamente.&quot;</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>✅ Entorno analítico configurado. Librerías cargadas exitosamente.</code></pre>
+<pre><code>Entorno analítico configurado. Librerías cargadas exitosamente.</code></pre>
 </div>
 </div>
 </section>
@@ -2746,7 +2746,7 @@ h3 { font-size: 1rem; }
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;VALOR_AJUSTE_PERIODO&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;VALOR_AJUSTE_PERIODO&#39;</span>].astype(<span class="bu">int</span>)</span>
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. 🔥 LIMPIEZA CRÍTICA: Convertir valores negativos a cero (0)</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. LIMPIEZA CRÍTICA: Convertir valores negativos a cero (0)</span></span>
 <span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>columnas_no_negativas <span class="op">=</span> [</span>
 <span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;FACTURACION_PROMEDIO&#39;</span>, <span class="st">&#39;M3_PROMEDIO&#39;</span>, <span class="st">&#39;VALOR_PAGO_PROMEDIO&#39;</span>, </span>
 <span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;FACTURACION_PERIODO&#39;</span>, <span class="st">&#39;M3_PERIODO&#39;</span>, <span class="st">&#39;VALOR_AJUSTE_PROMEDIO&#39;</span></span>
@@ -2762,7 +2762,7 @@ h3 { font-size: 1rem; }
 <span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;Dataset real cargado y saneado con éxito. Dimensiones: </span><span class="sc">{</span>df<span class="sc">.</span>shape<span class="sc">}</span><span class="ch">\n</span><span class="ss">&#39;</span>)</span>
 <span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================================</span></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="co"># 📊 MATRIZ DE CORRELACIÓN PARA JUSTIFICAR LAS NUEVAS VARIABLES SENIOR</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="co"># MATRIZ DE CORRELACIÓN PARA JUSTIFICAR LAS NUEVAS VARIABLES SENIOR</span></span>
 <span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================================</span></span>
 <span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Generando matriz de correlación analítica...&#39;</span>)</span>
 <span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
@@ -3208,7 +3208,7 @@ Matriz X_test:  (131972, 239) | Vector y_test:  (131972,)</code></pre>
 <span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  [Ajustes ignorados (Pérdida de dinero): </span><span class="sc">{</span>cm[<span class="dv">1</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">]   | [Ajustes atrapados con éxito: </span><span class="sc">{</span>cm[<span class="dv">1</span>][<span class="dv">1</span>]<span class="sc">}</span><span class="ss">]&quot;</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>🏋️ Iniciando optimización optimizada en tu Intel i7...
+<pre><code>Iniciando optimización en tu Intel i7...
 
 Hiperparámetros óptimos reales para el negocio: {&#39;clasificador__C&#39;: 0.1, &#39;clasificador__penalty&#39;: &#39;l2&#39;}
 F1-Score medio real en Validación Cruzada: 0.0777
