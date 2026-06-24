@@ -2674,7 +2674,7 @@ h3 { font-size: 1rem; }
 
 <section id="contexto-del-análisis" class="level1">
 <h1>0 Contexto del análisis</h1>
-<p>El objetivo del cuaderno es comparar modelos de Machine Learning para estimar la probabilidad de que una cuenta o reclamación derive en un ajuste de facturación aprobado. El flujo incluye ingesta de datos, limpieza, ingeniería de características, partición estratificada, entrenamiento de modelos y comparación de métricas.</p>
+<p>El objetivo del proyecto es comparar modelos de Machine Learning para estimar la probabilidad de que una cuenta presente un ajuste de facturación. El flujo incluye ingesta de datos, limpieza, ingeniería de características, partición estratificada, entrenamiento de modelos y comparación de métricas.</p>
 <p>La variable objetivo es <code>VALOR_AJUSTE_PERIODO</code>, donde <code>1</code> representa cuentas con ajuste y <code>0</code> representa cuentas estables o sin ajuste.</p>
 <section id="importación-de-librerías-y-configuración-del-entorno" class="level2">
 <h2 class="anchored" data-anchor-id="importación-de-librerías-y-configuración-del-entorno">1 Importación de librerías y configuración del entorno</h2>
@@ -2954,14 +2954,14 @@ Proceso completado. Nuevas dimensiones del dataset: (659856, 17)</code></pre>
 <span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>columnas_excluir <span class="op">=</span> [<span class="st">&#39;ID_Contrato&#39;</span>, <span class="st">&#39;Codigo_Sector_Instalacion&#39;</span>, <span class="st">&#39;Codigo_Postal_Instalacion&#39;</span>]</span>
 <span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>df_filtrado <span class="op">=</span> df_limpio.drop(columns<span class="op">=</span>[c <span class="cf">for</span> c <span class="kw">in</span> columnas_excluir <span class="cf">if</span> c <span class="kw">in</span> df_limpio.columns])</span>
 <span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;✅ Proceso ETL finalizado. Datos limpios, tipados y estructurados para el modelado.&quot;</span>)</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Proceso ETL finalizado. Datos limpios, tipados y estructurados para el modelado.&quot;</span>)</span>
 <span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>df_filtrado.head(<span class="dv">5</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>🔍 Valores &#39;?&#39; identificados por columna:
+<pre><code>Valores &#39;?&#39; identificados por columna:
 Series([], dtype: int64) 
 
-✅ Proceso ETL finalizado. Datos limpios, tipados y estructurados para el modelado.</code></pre>
+Proceso ETL finalizado. Datos limpios, tipados y estructurados para el modelado.</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <div>
@@ -3125,7 +3125,7 @@ Series([], dtype: int64)
 Matriz X_test:  (131972, 239) | Vector y_test:  (131972,)</code></pre>
 </div>
 </div>
-<p><strong>Interpretación de la partición y codificación:</strong> el conjunto de entrenamiento quedó con 527.884 registros y el conjunto de prueba con 131.972 registros. La partición estratificada es importante porque mantiene la proporción de clases y evita que la clase minoritaria quede mal representada durante la evaluación.</p>
+<p><strong>Interpretación de la partición y codificación:</strong> el conjunto de datos fue dividido en 527.884 registros para entrenamiento y 131.972 registros para prueba, garantizando una cantidad suficiente de observaciones para el aprendizaje del modelo y una evaluación robusta de su desempeño. La partición se realizó de manera estratificada sobre la variable objetivo, preservando la proporción original de las clases en ambos subconjuntos. Este enfoque es especialmente relevante en problemas con desbalance de clases, ya que evita una representación inadecuada de la clase minoritaria y permite obtener métricas de evaluación más confiables y representativas del comportamiento real del modelo.</p>
 </section>
 <section id="pipeline-y-ajuste-de-hiperparámetros-con-gridsearchcv" class="level2">
 <h2 class="anchored" data-anchor-id="pipeline-y-ajuste-de-hiperparámetros-con-gridsearchcv">5 Pipeline y ajuste de hiperparámetros con GridSearchCV</h2>
@@ -3210,10 +3210,10 @@ Matriz X_test:  (131972, 239) | Vector y_test:  (131972,)</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>🏋️ Iniciando optimización optimizada en tu Intel i7...
 
-🎯 Hiperparámetros óptimos reales para el negocio: {&#39;clasificador__C&#39;: 0.1, &#39;clasificador__penalty&#39;: &#39;l2&#39;}
-📊 F1-Score medio real en Validación Cruzada: 0.0777
+Hiperparámetros óptimos reales para el negocio: {&#39;clasificador__C&#39;: 0.1, &#39;clasificador__penalty&#39;: &#39;l2&#39;}
+F1-Score medio real en Validación Cruzada: 0.0777
 
-📋 REPORTE DE CLASIFICACIÓN REAL (Fíjate en la fila de la clase 1):
+REPORTE DE CLASIFICACIÓN REAL (Fíjate en la fila de la clase 1):
               precision    recall  f1-score   support
 
            0       0.99      0.85      0.92    651395
@@ -3223,12 +3223,12 @@ Matriz X_test:  (131972, 239) | Vector y_test:  (131972,)</code></pre>
    macro avg       0.52      0.74      0.51    659856
 weighted avg       0.98      0.85      0.91    659856
 
-🧮 MATRIZ DE CONFUSIÓN OPERATIVA:
+MATRIZ DE CONFUSIÓN OPERATIVA:
   [Clientes estables predichos correctamente: 554349] | [Falsas Alarmas (Gasto innecesario): 97046]
   [Ajustes ignorados (Pérdida de dinero): 3146]   | [Ajustes atrapados con éxito: 5315]</code></pre>
 </div>
 </div>
-<p><strong>Interpretación de la Regresión Logística:</strong> el modelo logra un recall alto para la clase de ajuste, capturando 5.315 casos positivos, pero su precisión es baja. Esto significa que encuentra muchos ajustes, aunque genera muchas falsas alarmas. Es un buen baseline cuando se prioriza no perder casos de ajuste, pero puede ser costoso operativamente por la cantidad de cuentas estables marcadas como riesgo.</p>
+<p><strong>Interpretación de la Regresión Logística:</strong> el modelo presenta una alta capacidad de detección de cuentas que efectivamente tendrán ajuste, alcanzando un recall elevado y logrando identificar 5.315 casos positivos. Sin embargo, esta sensibilidad viene acompañada de una precisión relativamente baja, lo que indica que una proporción importante de las cuentas clasificadas como "con ajuste" finalmente no presentan dicho comportamiento. En términos operativos, esto implica un mayor número de falsas alarmas y, por tanto, un incremento en los esfuerzos de seguimiento o gestión sobre cuentas que realmente permanecen estables. A pesar de esta limitación, la regresión logística constituye una línea base sólida cuando el objetivo principal es minimizar la pérdida de casos de ajuste, priorizando la cobertura sobre la precisión.</p>
 </section>
 <section id="entrenamiento-competitivo-y-evaluación-de-gradient-boosting" class="level2">
 <h2 class="anchored" data-anchor-id="entrenamiento-competitivo-y-evaluación-de-gradient-boosting">6 Entrenamiento competitivo y evaluación de Gradient Boosting</h2>
@@ -3291,10 +3291,10 @@ weighted avg       0.98      0.85      0.91    659856
 <span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="ch">\n</span><span class="ss">El modelo seleccionado para producción por consistencia operativa es: </span><span class="sc">{</span>df_res<span class="sc">.</span>index[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>🌲 Entrenando la arquitectura Gradient Boosting Classifier en paralelo...
-🏋️ Ejecutando validación cruzada de 5 pliegues sobre el universo real...
+<pre><code>Entrenando la arquitectura Gradient Boosting Classifier en paralelo...
+Ejecutando validación cruzada de 5 pliegues sobre el universo real...
 
-🏆 CUADRO COMPARATIVO DE RENDIMIENTO DE MODELOS:</code></pre>
+CUADRO COMPARATIVO DE RENDIMIENTO DE MODELOS:</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -3332,7 +3332,7 @@ weighted avg       0.98      0.85      0.91    659856
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-🎯 El modelo seleccionado para producción por consistencia operativa es: Gradient Boosting (Ganador)</code></pre>
+El modelo seleccionado para producción por consistencia operativa es: Gradient Boosting (Ganador)</code></pre>
 </div>
 </div>
 <p><strong>Interpretación de la comparación de modelos:</strong> Gradient Boosting obtiene un F1-Score superior y una precisión mucho mayor que la Regresión Logística, aunque sacrifica recall. En términos operativos, Gradient Boosting es más equilibrado porque reduce falsas alarmas y mantiene mejor consistencia global. La selección final depende del costo de ignorar un ajuste frente al costo de revisar cuentas sin ajuste.</p>
@@ -3361,7 +3361,7 @@ weighted avg       0.98      0.85      0.91    659856
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Preparando la exportación rápida...
-✅ ¡Exportado en segundos en la raíz! Tamaño aproximado en disco: 0.40 MB</code></pre>
+¡Exportado en segundos en la raíz! Tamaño aproximado en disco: 0.40 MB</code></pre>
 </div>
 </div>
 <p><strong>Interpretación de la exportación:</strong> el modelo fue serializado correctamente como <code>ajuste_predictor_model.pkl</code>. Esto confirma que el flujo no solo compara modelos, sino que también deja un artefacto reutilizable para despliegue, pruebas externas o integración con procesos operativos.</p>
